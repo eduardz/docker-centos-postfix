@@ -3,6 +3,8 @@ function install_postfix () {
 
   postconf -e myhostname=$VIRTUAL_HOST
   postconf -e mydestination=$DOMAIN_NAME,$VIRTUAL_HOST,localhost.localdomain,localhost
+  postconf -e mynetworks='127.0.0.1/32 192.168.0.0/16 172.16.0.0/12 10.0.0.0/8'
+  postconf -e smtpd_relay_restrictions='permit_mynetworks permit_sasl_authenticated defer_unauth_destination'
 
   # setup the relay host
   postconf -e smtp_sasl_auth_enable=yes

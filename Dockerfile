@@ -10,6 +10,8 @@ ADD scripts /scripts
 RUN chmod +x /scripts/*.sh && \
     touch /first_run
 
+EXPOSE 25
+
 # Kicking in
 CMD ["/scripts/start.sh"]
 
